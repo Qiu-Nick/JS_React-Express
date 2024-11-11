@@ -16,11 +16,14 @@ function App() {
 	const [employee, setEmployee] = useState(sampleEmployee);
 
 	const getEmployee = () => {
-		fetch("https://randomuser.me/api")
+		fetch("http://localhost:3310/api/employees")
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
 				setEmployee(data.results[0]);
+			})
+			.catch((error) => {
+				console.error("Error fetching employee:", error);
 			});
 	};
 
